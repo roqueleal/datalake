@@ -1,8 +1,16 @@
-FROM php:5.6-fpm
+FROM php:7.0
 
-RUN apt-get update
-
-# Install Postgre PDO
-RUN apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
+RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/backports.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    libxml2-dev \
+    unzip \
+ && apt-get -t jessie-backports install -y --no-install-recommends \
+    libav-tools \
+ && rm -rf /var/lib/apt/lists/* \
+ && docker-php-ext-install \
+    pcntl \
+    pdo \
+    pdo_pgsql \
+    pgsql \
