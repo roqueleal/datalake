@@ -1,5 +1,8 @@
-FROM php:fpm-alpine
-RUN apk update && apk add --no-cache \
-        postgresql-dev \
-    && docker-php-ext-install -j$(nproc) pgsql \
-    && docker-php-ext-install -j$(nproc) pdo_pgsql
+FROM php:5.6-fpm
+
+RUN apt-get update
+
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
