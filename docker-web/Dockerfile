@@ -1,4 +1,3 @@
-
 FROM php:7.0
 
 RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/backports.list \
@@ -7,9 +6,14 @@ RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sou
     libpq-dev \
     libxml2-dev \
     unzip \
-    build-essential gettext libpq-dev\
-    wkhtmltopdf\
-    gdal-bin\    
+ && apt-get -y update \
+ && apt-get install -y build-essential gettext libpq-dev\
+ && apt-get install -y wkhtmltopdf\
+ && apt-get install -y gdal-bin\
+ && apt-get install -y libgdal-dev\
+ && apt-get install -y --no-install-recommends software-properties-common\
+ && apt-add-repository contrib\
+ && apt-get update   
  && apt-get -t jessie-backports install -y --no-install-recommends \
     libav-tools \
  && rm -rf /var/lib/apt/lists/* \
@@ -18,7 +22,5 @@ RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sou
     pdo \
     pdo_pgsql \
     pgsql \
-
-
 
 #chown -R 5050:5050 ./docker-web/pgadmin
