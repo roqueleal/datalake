@@ -1,9 +1,11 @@
-FROM Debian 
-FROM php:fpm-alpine
+FROM php:5.6-fpm
 
-RUN set -ex \
-  && apk --no-cache add \
-    postgresql-dev
+RUN apt-get update
 
-RUN docker-php-ext-install pdo pdo_pgsql
-#chown -R 5050:5050 ./docker-web/pgadmin
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+    
+    #chown -R 5050:5050 ./docker-web/pgadmin
+    
