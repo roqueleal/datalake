@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "twitter",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "admin",
+            "Host": "postgresql",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "twitter_database"
+        }
+    }
+}

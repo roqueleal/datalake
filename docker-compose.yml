@@ -1,0 +1,74 @@
+version: '3'
+services:
+  tweet_collector:
+    build: tweet_collector/
+    volumes:
+    - ./tweet_collector/:/app
+    restart: unless-stopped
+
+  etl_job:
+    build: etl_job/
+    volumes:
+    - ./etl_job/:/app2
+    restart: unless-stopped
+   
+  mongodb:
+    image: mongo
+    ports:
+    - "27017:27017"
+    restart: unless-stopped
+
+  web-nginx:
+        image: nginx:stable-alpine
+        container_name: web-nginx
+        volumes:
+            - "./docker-web/www:/usr/share/nginx/html:ro"
+            - "./docker-web/log:/var/log/nginx"
+            - "./docker-web/nginx.conf:/etc/nginx/nginx.conf:ro"
+        ports:
+            - '80:80'
+            - '443:443'   
+          
+  web-php:
+        build: ./docker-web/  
+        container_name: web-php
+        volumes:
+            - "./docker-web/www:/script:ro"
+           
+  postgresql:
+        image: postgres:14-alpine
+        build:
+            context: ./docker-web/postgres
+        volumes:
+            - "./docker-web/postgres/data:/var/lib/postgresql/data"    
+        hostname: postgresql    
+        environment:
+          - POSTGRES_USER=admin
+          - POSTGRES_PASSWORD=root
+          - POSTGRES_DB=twitter_database
+        ports:
+          - "5432:5432"
+        restart: unless-stopped
+        networks:
+          - postgres-network  
+
+  pgadmin:
+        container_name: pgadmin4_container
+        image: dpage/pgadmin4
+        environment:
+          PGADMIN_DEFAULT_EMAIL: admin@admin.com
+          PGADMIN_DEFAULT_PASSWORD: root
+        ports:
+          - "5050:80"
+        volumes:
+          - "./docker-web/pgadmin:/var/lib/pgadmin"
+          - "./docker-web/pgadmin/servers.json:/pgadmin4/servers.json"
+        depends_on:
+          - postgresql
+        restart: unless-stopped
+        networks:
+          - postgres-network  
+
+networks: 
+  postgres-network:
+    driver: bridge
