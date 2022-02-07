@@ -46,7 +46,6 @@ services:
           - POSTGRES_USER=admin
           - POSTGRES_PASSWORD=root
           - POSTGRES_DB=twitter_database
-          - POSTGRES_INITDB_ARGS="--auth-host=scram-sha-256 --auth-local=scram-sha-256"
         ports:
           - "5432:5432"
         restart: unless-stopped
