@@ -1,7 +1,9 @@
+FROM Debian 
 FROM php:fpm-alpine
-RUN apk update && apk add --no-cache \
-        postgresql-dev \
-    && docker-php-ext-install -j$(nproc) pgsql \
-    && docker-php-ext-install -j$(nproc) pdo_pgsql
 
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql
 #chown -R 5050:5050 ./docker-web/pgadmin
