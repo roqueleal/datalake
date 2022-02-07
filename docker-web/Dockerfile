@@ -17,4 +17,3 @@ RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' > /etc/apt/sou
     pdo \
     pdo_pgsql \
     pgsql \
- && chown -R 5050:5050 ./docker-web/pgadmin
