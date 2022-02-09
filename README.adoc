@@ -9,7 +9,7 @@
 - [Technologies and Libraries](#technologies-and-libraries)
 - [Setup](#setup)
 
-
+![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.jpg) 
 ### General info
 This project is about how to built a docker-pipeline which consists a tweet collector, its sentiment analysis and posting them via html.  
 Every 2 minutes the last tweet about Covid is collected, saved into a database and shared in html.  
