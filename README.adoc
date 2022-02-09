@@ -9,7 +9,7 @@
 - [Technologies and Libraries](#technologies-and-libraries)
 - [Setup](#setup)
 
-![Toronto Canda 2018](/Docker.jpg)
+![Toronto Canda 2018](/Docker.png)
 
 ![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.png) 
 
