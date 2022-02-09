@@ -1,4 +1,4 @@
-# Docker pipeline with ETL, sentiment analysis and posting on Slack
+# Docker Datalake with ETL, sentiment analysis and posting on html
  
 
 ## Table of Contents
@@ -8,12 +8,11 @@
 
 
 ### General info
-This project is about how to built a docker-pipeline which consists a tweet collector, its sentiment analysis and posting them via slack bot.  
-Every 10 minutes the last tweet about Covid is collected, saved into a database and shared in Slack.  
+This project is about how to built a docker-pipeline which consists a tweet collector, its sentiment analysis and posting them via html.  
+Every 2 minutes the last tweet about Covid is collected, saved into a database and shared in html.  
 The following steps are applied:
 - Docker Image, Container, Compose
 - Twitter API
-- Slack API
 - Logging
 - .env -> key protection
 - polling method
@@ -29,7 +28,11 @@ The following steps are applied:
 	- dotenv
 	- time
 - PostgreSQL
-- docker 
+- docker
+- html
+- MongoDB
+- Postgres
+- PgAdmin
 
 ### Setup
 The main reason of using docker-container is to make setup easy and applicable on any machine.
