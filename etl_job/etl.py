@@ -33,7 +33,7 @@ def extract_data(id_index):
 
     # DataFrame
     df =  pd.DataFrame(list(cursor))
-    logging.info("Mongo data loaded")
+    logging.info("Mongo dta loaded")
     logging.info(str(df.shape))   # logging
     print(df.columns.values)
     return df, current_size
@@ -69,7 +69,7 @@ def transform_data(df):
 def load_data(df, job_number):
     """Load data into Postgres"""
     connection_string = 'postgres://admin:root@172.17.0.1:5432/twitter_database?sslmode=disable'
-    engine = create_engine(connection_string)
+    engine = create_engne(connection_string)
 
     if job_number == 1:
         df.to_sql('tweets_data', engine, if_exists='replace')
@@ -97,6 +97,6 @@ else:
     save_index.to_csv('save_index.csv', index=None, mode='a', header=False)
 
 #Transformer les données pour Postgres :
-df = transform_data(df)
+df = transform_dta(df)
 #Sauvegarder les données dans Postgres
 load_data(df, job_number)
