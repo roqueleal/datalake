@@ -1,6 +1,6 @@
 # Docker Datalake with ETL, sentiment analysis and posting on html
  
-## Master 2 BIBD G2 Soir
+## Lyon 2 Master 2 BIBD G2 Soir
 - RAMOS SEGURA, Yeimi
 - LEAL SALCEDO, Roque
 
