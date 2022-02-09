@@ -9,7 +9,7 @@
 - [Technologies and Libraries](#technologies-and-libraries)
 - [Setup](#setup)
 
-![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.jpg) 
+![Image text](https://raw.githubusercontent.com/roqueleal/datalake/main/Docker.jpg) 
 
 
 ### General info
