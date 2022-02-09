@@ -9,11 +9,8 @@
 - [Technologies and Libraries](#technologies-and-libraries)
 - [Setup](#setup)
 
-![Toronto Canda 2018](/Docker.png)
-
 ![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.png) 
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
 ### General info
 This project is about how to built a docker-pipeline which consists a tweet collector, its sentiment analysis and posting them via html.  
