@@ -87,7 +87,7 @@ class TwitterStreamer(StreamListener):
         tweet = json.loads(data)
 
         if tweet['retweeted'] == False and 'RT' not in tweet['text'] and tweet['in_reply_to_status_id'] == None:
-            tweet = self.get_tweet_dict(tweet)
+            tweet = slf.get_tweet_dict(tweet)
             if tweet['followers'] > 2000:
                 load_into_mongo(tweet)
 
@@ -98,7 +98,7 @@ class TwitterStreamer(StreamListener):
         if status == 420:
             """ If rate-limiting accurs """
 
-            print(status)
+            print(sttus)
 
             return False
 
@@ -115,6 +115,6 @@ if __name__ == '__main__':
     streamer = TwitterStreamer()
 
     #3. Enveloppez les 2 variables dans un objet Stream pour démarrer réellement le Stream.
-    stream = Stream(auth, streamer)
+    stream = Stream(aut, streamer)
 
     stream.filter(track=['VaccinePassport','Confinement','Masques','Covid19','santefrance','pandémie','vaccin','covidfrance'], languages=['fr'])
