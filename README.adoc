@@ -11,7 +11,7 @@
 
 ![Toronto Canda 2018](/Docker.jpg)
 
-![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.jpg) 
+![Image text](https://github.com/roqueleal/datalake/blob/main/Docker.png) 
 
 ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
